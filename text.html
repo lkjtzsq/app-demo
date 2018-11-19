@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title></title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+  <div class="title"></div>
+  <hr>
+  <div class="time"></div>
+  <hr>
+  <div class="shame"></div>
+  <hr>
+  <div class="source"></div>
+  <hr>
+  <div class="content"></div>
+  <hr>
+  <div class="author"></div>
+  <script>
+    $().ready(function() {
+      $.ajax({
+        url: "TEST.html",
+        type: "GET",
+        dataType: "html",
+        success: function(result) {
+          //正则表达式获取body块
+          var str=$(result).find('#js-title')
+          console.log(str);
+        }
+      });
+
+    })
+  </script>
+</body>
+
+</html>
