@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  font-style: normal;
+  letter-spacing: normal;
+}
+
+a:link {
+  text-decoration: none;
+  color: #666;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+  font-size: 1px;
+  line-height: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+body {
+  font-size: 10px;
+  color: #666;
+  font-family: "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+}
+
+img {
+  border: 0;
+}

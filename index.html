@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>app-demo</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/jquery-1.7.2.min.js"></script>
+  <!--[if lte IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+  <!------------------------------ PC代码开始 ------------------------------->
+  <!-- 头部start -->
+  <div class="phead">
+    <div class="pnav">
+      <ul class="pnav-list"></ul>
+      <script>
+        // pc导航请求ajax
+        $().ready(function() {
+          $.ajax({
+            url: "./json/nav.json",
+            type: "GET",
+            dataType: 'json',
+            data: {
+
+            },
+            success: function(data) {
+              var str = '';
+              for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var list = data[i].list;
+                str += '<li><a href=' + item.href + ' target="_blank">' + item.name + '</a>';
+                if (list) {
+                  str += '<ul class="child-lists">';
+                  for (var j = 0; j < list.length; j++) {
+                    str += '<li><a href=' + list[j].href + ' target="_blank">' + list[j].title + '</a></li>';
+                  }
+                  str = str + '</ul>'
+                }
+                str = str + '</li>'
+              }
+              $(str).appendTo($('.pnav-list'));
+            }
+          });
+        });
+      </script>
+    </div>
+  </div>
+  <!-- 头部end -->
+  <!-- 主体start -->
+  <div class="main">
+    <div class="main-left">
+      <!-- 头条(共用)start -->
+      <div class="tt">
+        <div class="tt-pic">
+          <a href="#" target="_blank" class="tt_href"><img src="./img/567.jpg" alt="习近平离京出席亚太经合组织第二十六次领导人非正式会议" /></a>
+        </div>
+        <div class="tt-txt">
+          <h1 class="tt-title"><a href="#" class="tt_href" target="
+            ">习近平离京出席亚太经合组织第二十六次领导人非正式会议</a></h1>
+          <div class="tt-desc">11月15日，国家主席习近平乘专机离开北京，出席在巴新莫尔斯比港举行的亚太经合组织第二十六次领导人非正式会议。</div>
+          <p class="tt-trbs">
+            <span class="trb-name"><a href="#" target="_blank">中青在线</a></span>
+            <span class="trb-time">4小时</span>
+            <span class="trb-count">31</span>
+          </p>
+          <p class="tt-logo">头条</p>
+        </div>
+        <div class="clear"></div>
+        <script>
+          // 头条ajax请求
+          $().ready(function() {
+            $.ajax({
+              url: "./json/toutiao.json",
+              type: "GET",
+              data: {
+
+              },
+              dataType: "json",
+              success: function(data) {
+                var tt = data[0]
+                $('.tt-pic img').attr("src", tt.imgUrl);
+                $('.tt_href').attr("href", tt.href);
+                $('.tt-title a').html(tt.title);
+                $(".tt-desc").html(tt.desc);
+                $(".trb-name").html(tt.source);
+                $(".trb-time").html(tt.time);
+                $(".trb-count").html(tt.look);
+              }
+            });
+          });
+        </script>
+      </div>
+      <!-- 头条(共用)end -->
+      <!-- 新闻列表区域(共用)start -->
+      <div class="list-panel" id="list-panel">
+        <div class="loading"><img src="./img/loading.gif" /></div>
+      </div>
+      <!-- 新闻列表区域(共用)end -->
+    </div>
+    <div class="main-right">
+      <h1 style="width:30px;margin: 0 auto;padding: 200px 0;word-wrap: break-word;text-align: center;">
+        右侧内容待开发...
+      </h1>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <!-- 主体end -->
+
+  <!------------------------------ PC代码结束 ------------------------------->
+
+  <!------------------------------ wap代码开始 ------------------------------->
+  <!-- 头部 -->
+  <div class="header-v4">
+    <!-- logo -->
+    <div class="header-container">
+      <div class="logo">
+        <a href="//m.thepaper.cn/" class="login" title="pengpai"></a>
+      </div>
+    </div>
+
+    <!-- hanbao 默认状态-->
+    <div class="burger-abox" style="display: block;">
+      <a class="burger-a" id="moblink_top_detail_xiazai" href="http://app.cyol.com">下载APP</a>
+    </div>
+    <div class="burger-p" id="burger" style="display: block;">
+      <div class="burger opaque">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="sy-downward">
+    <div class="upv30-icon" style=""></div>
+    <div class="sy-downward-cont">
+      <div class="user-view-info" style="display:none;">
+        <div id="_no_login">
+          <ul class="sections-list-big">
+            <li><a href="javascript:void(0)" class=""><i></i><span>登录</span></a></li>
+            <li><a href="http://sou.cyol.com/indexMobile.jsp" class="serch"><i></i><span>搜索</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="cont-list">
+        <div class="scrolly">
+          <div class="sections-panel ">
+            <ul class="sections-nav ">
+              <li class=" cur-state">视频<em class="tabline-lf"></em></li>
+              <li class="">时事<em class="tabline-lf"></em></li>
+              <li class="">财经<em class="tabline-lf"></em></li>
+              <li class="">湃客<em class="tabline-lf"></em></li>
+              <li class="">思想<em class="tabline-lf"></em></li>
+              <li class="">生活<em class="tabline-lf"></em><em class="tabline-rg"></em></li>
+            </ul>
+          </div>
+          <ul class="sections-list" style="display: block; height: 494px;">
+            <li><a href="list_26912">上直播</a></li>
+            <li><a href="list_26913">七环视频</a></li>
+            <li><a href="list_26965">温度计</a></li>
+            <li><a href="list_26908">一级视场</a></li>
+            <li><a href="list_27260">World湃</a></li>
+            <li><a href="list_26907">湃客科技</a></li>
+            <li><a href="list_33168">纪录湃</a></li>
+            <li><a href="list_26911">围观</a></li>
+            <li><a href="list_26918">@所有人</a></li>
+            <li><a href="list_26906">大都会</a></li>
+            <li><a href="list_26909">追光灯</a></li>
+            <li><a href="list_26910">运动装</a></li>
+            <li><a href="list_26914">健寻记</a></li>
+            <li><a href="list_26915">城市漫步</a></li>
+            <li><a href="list_26919">中国政前方</a></li>
+          </ul>
+          <ul class="sections-list" style="display: none; height: 494px;">
+            <li><a href="list_25462">中国政库</a></li>
+            <li><a href="list_25488">中南海</a></li>
+            <li><a href="list_25489">舆论场</a></li>
+            <li><a href="list_25490">打虎记</a></li>
+            <li><a href="list_25423">人事风向</a></li>
+            <li><a href="list_25426">法治中国</a></li>
+            <li><a href="list_25424">一号专案</a></li>
+            <li><a href="list_25463">港台来信</a></li>
+            <li><a href="list_25491">长三角政商</a></li>
+            <li><a href="list_25428">直击现场</a></li>
+            <li><a href="list_27604">暖闻</a></li>
+            <li><a href="list_25464">澎湃质量报告</a></li>
+            <li><a href="list_25425">绿政公署</a></li>
+            <li><a href="list_25429">澎湃国际</a></li>
+            <li><a href="list_25481">外交学人</a></li>
+            <li><a href="list_25430">澎湃防务</a></li>
+            <li><a href="list_25678">唐人街</a></li>
+            <li><a href="list_25427">澎湃人物</a></li>
+            <li><a href="list_25422">浦江头条</a></li>
+            <li><a href="list_25487">教育家</a></li>
+            <li><a href="list_25634">全景现场</a></li>
+            <li><a href="list_25635">美数课</a></li>
+            <li><a href="list_25600">快看</a></li>
+          </ul>
+          <ul class="sections-list" style="display: none; height: 494px;">
+            <li><a href="list_25434">10%公司</a></li>
+            <li><a href="list_25436">能见度</a></li>
+            <li><a href="list_25433">地产界</a></li>
+            <li><a href="list_25438">财经上下游</a></li>
+            <li><a href="list_25435">金改实验室</a></li>
+            <li><a href="list_25437">牛市点线面</a></li>
+            <li><a href="list_27234">科技湃</a></li>
+            <li><a href="list_25485">澎湃商学院</a></li>
+            <li><a href="list_25432">自贸区连线</a></li>
+            <li><a href="list_37978">进博会在线</a></li>
+          </ul>
+          <ul class="sections-list" style="display: none; height: 494px;">
+            <li><a href="list_35571">眼光</a></li>
+            <li><a href="list_35570">镜相</a></li>
+            <li><a href="list_35572">有数</a></li>
+            <li><a href="list_47281">众声</a></li>
+          </ul>
+          <ul class="sections-list" style="display: none; height: 494px;">
+            <li><a href="list_25444">社论</a></li>
+            <li><a href="list_27224">澎湃评论</a></li>
+            <li><a href="list_26525">思想湃</a></li>
+            <li><a href="list_26878">上海书评</a></li>
+            <li><a href="list_25483">思想市场</a></li>
+            <li><a href="list_25457">私家历史</a></li>
+            <li><a href="list_25574">翻书党</a></li>
+            <li><a href="list_25455">艺术评论</a></li>
+            <li><a href="list_26937">古代艺术</a></li>
+            <li><a href="list_25450">文化课</a></li>
+            <li><a href="list_25482">逝者</a></li>
+            <li><a href="list_25445">澎湃研究所</a></li>
+            <li><a href="list_25456">市政厅</a></li>
+            <li><a href="list_25446">请讲</a></li>
+            <li><a href="list_25536">专栏</a></li>
+            <li><a href="list_26506">异次元</a></li>
+          </ul>
+          <ul class="sections-list" style="display: none; height: 494px;">
+            <li><a href="list_25448">有戏</a></li>
+            <li><a href="list_26609">文艺范</a></li>
+            <li><a href="list_25942">身体</a></li>
+            <li><a href="list_26015">私·奔</a></li>
+            <li><a href="list_25599">运动家</a></li>
+            <li><a href="list_25842">私家地理</a></li>
+            <li><a href="list_26862">楼市</a></li>
+            <li><a href="list_25769">生活方式</a></li>
+            <li><a href="list_25990">澎湃联播</a></li>
+            <li><a href="list_26173">视界</a></li>
+            <li><a href="list_26202">亲子学堂</a></li>
+            <li><a href="list_26404">赢家</a></li>
+            <li><a href="list_26490">汽车圈</a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------------------------------ wap代码结束 ------------------------------->
+  <!-- 回到顶部start -->
+  <div class="back-to" id="toolBackTop">
+    <a title="返回顶部" class="back-top" id="backtotop">
+      <!--返回顶部-->
+    </a>
+  </div>
+  <!-- 回到顶部end -->
+</body>
+<script src="./js/index.js"></script>
+<script src="./js/load.js"></script>
+<script src="./js/header.js"></script>
+
+</html>
