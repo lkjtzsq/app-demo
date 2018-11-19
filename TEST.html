@@ -14,9 +14,269 @@
   <script>
     (function(d,c){var e=d.documentElement,a="orientationchange" in window?"orientationchange":"resize",b=function(){var f=e.clientWidth;if(!f){return}if(f>=750){e.style.fontSize="100px"}else{e.style.fontSize=100*(f/750)+"px"}};if(!d.addEventListener){return}c.addEventListener(a,b,false);d.addEventListener("DOMContentLoaded",b,false)})(document,window);
   </script>
-  <link rel="stylesheet" href="http://shareapp.cyol.com//apifile/static/src/css/main.css" />
-  <script src="http://shareapp.cyol.com//apifile/static/src/js/jquery-3.3.1.min.js"></script>
-  <script src="http://shareapp.cyol.com//apifile/static/src/js/jquery.lazyload.js"></script>
+<style>
+@charset "utf-8";
+/* CSS Reset */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+a,
+code,
+em,
+img,
+q,
+small,
+strong,
+dd,
+dl,
+dt,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+table,
+tbody,
+tr,
+th,
+td,
+input,
+textarea,
+button,
+i,
+input,
+select,
+option,
+header,
+footer,
+main,
+article,
+section,
+aside,
+nav {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+i,
+em {
+  font-style: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+b,
+strong {
+  font-weight: 500;
+}
+ul,
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+}
+a:focus,
+a:active,
+a:hover {
+  outline: none;
+}
+a img {
+  vertical-align: top;
+}
+a,
+img {
+  -webkit-touch-callout: none;
+}
+img {
+  border: none;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-overflow-scrolling: touch;
+}
+/* CSS Reset End */
+/* 浮动与清除浮动 */
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+  overflow: hidden;
+}
+.ellipsis-x {
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  overflow: hidden;
+}
+/* 页面样式 */
+body {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: .36rem 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #333;
+}
+img {
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+a,
+p {
+  word-break: break-all;
+}
+/* 页面样式 */
+h1 {
+  padding: 0 .36rem;
+  line-height: 0.63rem;
+  font-size: 24px;
+}
+/* 新闻信息 */
+.news-info {
+  padding: 0 .36rem;
+  line-height: 1.17rem;
+  font-size: 12px;
+  color: #aaa;
+}
+/* 新闻简介 */
+.news-summary {
+  position: relative;
+  padding: .16rem .28rem .2rem;
+  margin: 0 .36rem;
+  background-color: #e6f2fe;
+  border-top: .03rem solid #439af8;
+  text-align:justify;
+}
+.news-summary:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: block;
+  width: 0!important;
+  height: 0!important;
+  font-size:0;
+  border-right: .18rem solid #439af8;
+  border-bottom: .18rem solid #439af8;
+  border-top: .18rem solid transparent;
+  border-left: .18rem solid transparent;
+}
+.news-summary p {
+  line-height: 0.6rem;
+  font-size: 16px;
+}
+/* 新闻内容 */
+.news-content {
+  position: relative;
+  padding-top: .35rem;
+}
+.news-content .section h2 {
+  position: relative;
+  padding-left: 0.35rem;
+  margin-bottom: 0.2rem;
+  line-height: 0.52rem;
+  font-size: 18px;
+  color: #439af8;
+}
+.news-content .section h2:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: .1rem;
+  height: 100%;
+  background-color: #439af8;
+}
+.news-content .section-main {
+  padding: 0 .36rem;
+  text-align: justify;
+}
+.section-main video{
+  width:98% important;
+}
+.news-content .section-main p {
+  margin-bottom: 0.5rem;
+  text-indent: 0em!important;
+  line-height: 0.6rem;
+  font-size: 18px;
+}
+/* 新闻按钮 */
+.news-btns {
+  margin-bottom: .4rem;
+  text-align: center;
+}
+.news-btns .btn-like {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 2.23rem;
+  height: .69rem;
+  margin: 0 auto;
+  border-radius: .34rem;
+  border: 1px solid #aaa;
+  text-align: center;
+  font-size: 13px;
+  color: #333;
+}
+.news-btns .btn-like .icon-like {
+  display: inline-block;
+  width: .28rem;
+  height: .26rem;
+  margin-right: .1rem;
+  background: url(../img/heart.png) no-repeat center;
+  background-size: 100%;
+}
+.subtitle{
+   text-align:center;
+   font-size:14px;
+   padding:0.36rem;
+}
+
+</style>
 
 </head>
 <body>
@@ -48,13 +308,4 @@
       <input type="hidden" id="isphone" value="">
       <input type="hidden" id="newsnid" value="152066">
 </body>
- <script src="http://shareapp.cyol.com//apifile/static/src/js/content.js"></script>
-  <link href="http://shareapp.cyol.com//cmsfile/src/static/videojs/video-js.min.css" rel="stylesheet">
-  <script src="http://shareapp.cyol.com//cmsfile/src/static/videojs/video.min.js"></script>
-  <script src="http://shareapp.cyol.com//cmsfile/src/static/videojs/videojs-flash.min.js"></script>
-  <script src="http://shareapp.cyol.com//cmsfile/src/static/videojs/lang/zh-CN.js"></script>
-  <script src="http://shareapp.cyol.com//cmsfile/src/static/videojs/videojs-contrib-hls.min.js"></script>
- <script>
-    videojs.options.flash.swf = 'http://shareapp.cyol.com//cmsfile/src/static/videojs/video-js.swf';
-  </script>
 </html>
