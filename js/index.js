@@ -17,5 +17,6 @@ cyol.showNavList();
 $(window).resize(function(){
   var wdWidth=$(window).width();
   if(wdWidth>640){
+    console.log
   }
 })
