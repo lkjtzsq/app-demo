@@ -20,65 +20,55 @@
   <div class="phead">
     <div class="pnav">
       <ul class="pnav-list"></ul>
-      <script>
-        // pc导航请求ajax
-        $().ready(function() {
-          $.ajax({
-            url: "./json/nav.json",
-            type: "GET",
-            async:false,
-            dataType: 'json',
-            data: {
-
-            },
-            success: function(data) {
-              var str = '';
-              var wapStr='';
-              var wapList='';
-              for (var i = 0; i < data.length; i++) {
-                var item = data[i];
-                var list = data[i].list;
-                str += '<li><a href=' + item.href + ' target="_blank">' + item.name + '</a>';
-                wapStr+='<li>'+item.name+'<em class="tabline-lf"></em></li>'
-                if (list) {
-                  str += '<ul class="child-lists">';
-                  wapList+='<ul class="sections-list" style="display:none;">';
-                  for (var j = 0; j < list.length; j++) {
-                    str += '<li><a href=' + list[j].href + ' target="_blank">' + list[j].title + '</a></li>';
-                    wapList+='<li><a href='+list[j].href+' target="_blank">'+list[j].title+'</a></li>'
-                  }
-                  str = str + '</ul>'
-                  wapList=wapList+'</ul>';
-                }
-                str = str + '</li>'
-              }
-              $(str).appendTo($('.pnav-list'));
-              $(wapStr).appendTo($('.sections-nav'));
-              $(wapList).appendTo($('.scrolly'));
-              $('.sections-list').eq(0).show()
-              $('.sections-nav li').eq(0).addClass('cur-state');
-              $('.pnav-list>li').hover(function(){
-                $(this).find('.child-lists').stop().show('fast');
-                $(this).siblings('li').find('.child-lists').slideUp();
-              },function(){
-                $(this).find('.child-lists').hide();
-              });
-            }
-          });
-        });
-      </script>
     </div>
   </div>
   <!-- 头部end -->
   <!-- 主体start -->
   <div class="main">
     <div class="main-left">
+      <!-- 头条(共用)start -->
+      <div class="tt">
+        <div class="tt-pic">
+          <a href="#" target="_blank" class="tt_href"><img src="" alt="" /></a>
+        </div>
+        <div class="tt-txt">
+          <h1 class="tt-title"><a href="#" class="tt_href" target="
+            "></a></h1>
+          <div class="tt-desc"></div>
+          <p class="tt-trbs">
+            <span class="trb-name"><a href="#" target="_blank"></a></span>
+            <span class="trb-time"></span>
+            <span class="trb-count"></span>
+          </p>
+          <p class="tt-logo">头条</p>
+        </div>
+        <div class="clear"></div>
+        <script>
+          // 头条ajax请求
+          $().ready(function() {
+            $.ajax({
+              url: "./json/toutiao.json",
+              type: "GET",
+              data: {
+
+              },
+              dataType: "json",
+              success: function(data) {
+                var tt = data[0]
+                $('.tt-pic img').attr("src", tt.imgUrl);
+                $('.tt_href').attr("href", tt.href);
+                $('.tt-title a').html(tt.title);
+                $(".tt-desc").html(tt.desc);
+                $(".trb-name").html(tt.source);
+                $(".trb-time").html(tt.time);
+                $(".trb-count").html(tt.look);
+              }
+            });
+          });
+        </script>
+      </div>
+      <!-- 头条(共用)end -->
       <!-- 新闻列表区域(共用)start -->
-      <style>
-        .list-panel{
-          margin-top:0;
-        }
-      </style>
       <div class="list-panel" id="list-panel">
         <div class="loading"><img src="./img/loading.gif" /></div>
       </div>
@@ -152,6 +142,69 @@
 </body>
 <script src="./js/index.js"></script>
 <script src="./js/load.js"></script>
-<script src="./js/header.js"></script>
+<script>
+  // pc导航请求ajax
+  $().ready(function() {
+    //获取地址栏参数
+    function GetQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]);
+      return null;
+    }
+    var tid = GetQueryString("tid");
+    if (!tid) {
+      tid = -1;
+    }
+    console.log(tid);
+    $.ajax({
+      url: "./json/nav.json",
+      type: "GET",
+      async: false,
+      dataType: 'json',
+      data: {
 
+      },
+      success: function(data) {
+        var data = data.data;
+        var str = '';
+        var wapStr = '';
+        var wapList = '';
+        for (var i = 0; i < data.length; i++) {
+          var item = data[i];
+          var list = data[i].childs;
+          if (item.tid == -1) {
+            str += '<li><a href="index.html">' + item.cnname + '</a>';
+          } else {
+            str += '<li><a href=channel.html?tid=' + item.tid + '>' + item.cnname + '</a>';
+          }
+          wapStr += '<li>' + item.cnname + '<em class="tabline-lf"></em></li>'
+          if (list.length) {
+            str += '<ul class="child-lists">';
+            wapList += '<ul class="sections-list" style="display:none;">';
+            for (var j = 0; j < list.length; j++) {
+              str += '<li><a href=list.html?tid=' + list[j].tid + '>' + list[j].cnname + '</a></li>';
+              wapList += '<li><a href=list.html?tid=' + list[j].tid + '>' + list[j].cnname + '</a></li>'
+            }
+            str = str + '</ul>'
+            wapList = wapList + '</ul>';
+          }
+          str = str + '</li>'
+        }
+        $(str).appendTo($('.pnav-list'));
+        $(wapStr).appendTo($('.sections-nav'));
+        $(wapList).appendTo($('.scrolly'));
+        $('.sections-list').eq(0).show()
+        $('.sections-nav li').eq(0).addClass('cur-state');
+        $('.pnav-list>li').hover(function() {
+          $(this).find('.child-lists').stop().show('fast');
+          $(this).siblings('li').find('.child-lists').slideUp();
+        }, function() {
+          $(this).find('.child-lists').hide();
+        });
+      }
+    });
+  });
+</script>
+<script src="./js/header.js"></script>
 </html>
