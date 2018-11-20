@@ -1,151 +1,310 @@
-[{
-		"id": 0,
-		"name": "学习",
-		"list": [{
-			"title": "学习进行时",
-			"href": "http://www.baidu.com/"
-		}],
-    "href": "http://www.baidu.com/"
-	},
-	{
-		"id": 1,
-		"name": "时政",
-		"list": [{
-				"title": "要闻",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "快讯",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "海运仓内参",
-				"href": "http://www.baidu.com/"
-			}
-		],
-    "href": "http://www.baidu.com/"
-	},
-	{
-		"id": 2,
-		"name": "共青团",
-		"list": [{
-			"title": "视点",
-			"href": "http://www.baidu.com/"
-		}],
-    "href": "http://www.baidu.com/"
-	},
-	{
-		"id": 3,
-		"name": "青年",
-		"list": [{
-				"title": "坤哥007",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "中青报官微",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "教育+",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "创+",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "青年观察家",
-				"href": "http://www.baidu.com/"
-			}
-		],
-    "href": "http://www.baidu.com/"
-	},
-	{
-		"id": 4,
-		"name": "生活",
-		"list": [{
-				"title": "暖闻",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "文化咖",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "汽车",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "旅游",
-				"href": "http://www.baidu.com/"
-			}
-		],
-    "href": "http://www.baidu.com/"
-	},
-	{
-		"id": 5,
-		"name": "榜样阅读",
-		"list": [{
-				"title": "榜样故事",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "邀你共读",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "个性解读",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "独家对话",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "后台花絮",
-				"href": "http://www.baidu.com/"
-			}
-		],
-    "href": "http://www.baidu.com/"
-	},
-	{
-		"id": 6,
-		"name": "活动",
-		"list": [{
-			"title": "活动家",
-			"href": "http://www.baidu.com/"
-		}],
-    "href": "http://www.baidu.com/"
-	},
-	{
-		"id": 7,
-		"name": "青秀H5",
-		"list": [{
-				"title": "时政解读",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "中青报道",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "校园精品",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "定制产品",
-				"href": "http://www.baidu.com/"
-			},
-			{
-				"title": "小游戏",
-				"href": "http://www.baidu.com/"
-			}
-		],
-    "href": "http://www.baidu.com/"
-	},
-	{
-		"id": 8,
-		"name": "订阅",
-    "href": "http://www.baidu.com/"
-	}
-]
+{
+  "data": [{
+    "tid": "-1",
+    "cnname": "推荐",
+    "pid": "0",
+    "childs": []
+  }, {
+    "tid": "548",
+    "cnname": "时政",
+    "pid": "676",
+    "childs": [{
+      "tid": "643",
+      "cnname": "要闻",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/e61b6f0eaa7b2123df3652c8b45ccc32.png"
+    }, {
+      "tid": "642",
+      "cnname": "快讯",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/4eb109f73b8b7f49667d824d8ef09a91.png"
+    }, {
+      "tid": "554",
+      "cnname": "海运仓内参",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/1073c7d42fcebd5a7601d74954a9974b.jpg"
+    }, {
+      "tid": "555",
+      "cnname": "学习青年",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/09ac25df42ca3c558d7fe0300f10fe48.jpg"
+    }, {
+      "tid": "556",
+      "cnname": "评论",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/884dd7244cd4f4684b537df1899124a8.jpg"
+    }, {
+      "tid": "746",
+      "cnname": "微光",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/a41c9fa1f927578dfd2f056e98bed647.jpg"
+    }, {
+      "tid": "477",
+      "cnname": "冰点",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/0bb763d137286c2a589969c66c86712f.png"
+    }, {
+      "tid": "559",
+      "cnname": "经济",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/55975595d37d34ff464bf7f70460c07c.png"
+    }, {
+      "tid": "530",
+      "cnname": "军事",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/5e26e95bb19fc27ed32e53e2a7e7f396.png"
+    }, {
+      "tid": "649",
+      "cnname": "民族",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/59da70c6febe91df83ca95b69fbe8d9c.png"
+    }, {
+      "tid": "650",
+      "cnname": "法治",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/0da78bebfe8760e68f10b8c0e7377a83.png"
+    }, {
+      "tid": "524",
+      "cnname": "国际",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/35bb540fc9ac4dfa942480080c5c575b.png"
+    }, {
+      "tid": "651",
+      "cnname": "青年参考",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/308ded8bf6ad347e367211c7d9456bb9.png"
+    }, {
+      "tid": "566",
+      "cnname": "专题",
+      "pid": "548",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/e7053d03b6ad2e556114d816963c7aa0.png"
+    }]
+  }, {
+    "tid": "665",
+    "cnname": "共青团",
+    "pid": "676",
+    "childs": [{
+      "tid": "667",
+      "cnname": "视点",
+      "pid": "665",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/77936de21ba84b1f1c06f6d5d5a2cf66.png"
+    }]
+  }, {
+    "tid": "549",
+    "cnname": "青年",
+    "pid": "676",
+    "childs": [{
+      "tid": "502",
+      "cnname": "坤哥007",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/f3f31f27a498962b5d10100a3ad258af.png"
+    }, {
+      "tid": "644",
+      "cnname": "中青报官微",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/ea56ac6fc0ac5d2ae1caebb2f68278ac.jpg"
+    }, {
+      "tid": "588",
+      "cnname": "教育+",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/e0ca864f73e8722ee7f1db77bc613967.png"
+    }, {
+      "tid": "90",
+      "cnname": "创＋",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/6349580625875edb0ece1e8259ba0f3f.png"
+    }, {
+      "tid": "480",
+      "cnname": "青年观察家",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/c10dac91ed81b5ff288f82f72c24ddcd.png"
+    }, {
+      "tid": "509",
+      "cnname": "来点科学",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/0ed0531f7d536159b4cf829f291f8dc3.png"
+    }, {
+      "tid": "492",
+      "cnname": "校媒",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/7478e71b2b063b325f8098c305c800fd.png"
+    }, {
+      "tid": "511",
+      "cnname": "青年之声",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/d7b3e2fc4ddd993c0548c03f17b3a24c.png"
+    }, {
+      "tid": "103",
+      "cnname": "KAB",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/5a219c8c39060b786a7596d3bb83e0dd.png"
+    }, {
+      "tid": "479",
+      "cnname": "民调",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/4549cae6719ab6aad1f77b2c0c2bf69e.png"
+    }, {
+      "tid": "82",
+      "cnname": "舆情",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/4d8f71106cfd8e955d2303f8fef827b3.png"
+    }, {
+      "tid": "652",
+      "cnname": "留学",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/748e39d923c1101dd59226e95a465a71.png"
+    }, {
+      "tid": "653",
+      "cnname": "职场",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/25267c45b588373c7734c8c428d715b9.png"
+    }, {
+      "tid": "674",
+      "cnname": "青年作家",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/591eda0a1dfa46658a61343c736816b5.png"
+    }, {
+      "tid": "675",
+      "cnname": "青年范儿",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/b9238bab1364debee52159ef3225b23c.png"
+    }, {
+      "tid": "646",
+      "cnname": "冰点推荐",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/fde80b52896a206f4edc87a50cd21f09.png"
+    }, {
+      "tid": "647",
+      "cnname": "中青报调查",
+      "pid": "549",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/1229ec5b780ee9402316f7f3b20d01f5.png"
+    }]
+  }, {
+    "tid": "550",
+    "cnname": "生活",
+    "pid": "676",
+    "childs": [{
+      "tid": "567",
+      "cnname": "暖闻",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/d054db654f295a7cd489b1de08c492b9.png"
+    }, {
+      "tid": "525",
+      "cnname": "文化咖",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/e3fac4be9ae0fcbc3b780b0b3602ff10.png"
+    }, {
+      "tid": "532",
+      "cnname": "汽车",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/84af672e177a242748f0d6a3bead5f22.png"
+    }, {
+      "tid": "571",
+      "cnname": "旅游",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/724aeec0b257b61dabdc184568762509.png"
+    }, {
+      "tid": "655",
+      "cnname": "健康",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/ae256067c3a2a82698c6da23b3646192.png"
+    }, {
+      "tid": "656",
+      "cnname": "情感",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/2bad3fa1aa3a7fb7e0ef11d0f99d8cc3.png"
+    }, {
+      "tid": "657",
+      "cnname": "心理",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/01fd15e649788a91a2f334d5d439ee9e.png"
+    }, {
+      "tid": "572",
+      "cnname": "体育",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/aeae2849beab7ec95099ed1be0232a93.png"
+    }, {
+      "tid": "576",
+      "cnname": "视觉",
+      "pid": "550",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/1f346c262c5a2ebac494d9bf9b60184d.jpg"
+    }]
+  }, {
+    "tid": "668",
+    "cnname": "榜样阅读",
+    "pid": "676",
+    "childs": [{
+      "tid": "673",
+      "cnname": "榜样故事",
+      "pid": "668",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/b9d4f364e174e4472770253b102369f4.png"
+    }, {
+      "tid": "669",
+      "cnname": "邀你共读",
+      "pid": "668",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/e0de6ae11234ec33305babb8fbc354ec.png"
+    }, {
+      "tid": "670",
+      "cnname": "个性解读",
+      "pid": "668",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/ede6260e23dbdd39ad4683334b40dee5.png"
+    }, {
+      "tid": "671",
+      "cnname": "独家对话",
+      "pid": "668",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/aa15c1d32b5a4db61baa78499517fc14.png"
+    }, {
+      "tid": "672",
+      "cnname": "幕后花絮",
+      "pid": "668",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/d3e3bf4bda504828d338aff600ee63bb.png"
+    }]
+  }, {
+    "tid": "658",
+    "cnname": "活动",
+    "pid": "676",
+    "childs": [{
+      "tid": "661",
+      "cnname": "活动家",
+      "pid": "658",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/fb507081ab176d90c614933ca680b7ea.png"
+    }]
+  }, {
+    "tid": "624",
+    "cnname": "青秀H5",
+    "pid": "676",
+    "childs": [{
+      "tid": "625",
+      "cnname": "时政解读",
+      "pid": "624",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/52b16d6b3fe4e1c9696181be53ca8e93.png"
+    }, {
+      "tid": "626",
+      "cnname": "中青报道",
+      "pid": "624",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/bbfc736f23739a229d642ca6fc4c23e7.png"
+    }, {
+      "tid": "627",
+      "cnname": "校园精品",
+      "pid": "624",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/201c7314cc5dbfa1f803cd776a10a58c.png"
+    }, {
+      "tid": "628",
+      "cnname": "定制产品",
+      "pid": "624",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/86bc3b598130da742cd725d9de002af4.png"
+    }, {
+      "tid": "629",
+      "cnname": "小游戏",
+      "pid": "624",
+      "typeimg": "http:\/\/shareapp.cyol.com\/cmsfile\/thumb\/92a719ce76e7c9466d5d727da91f1b8c.png"
+    }]
+  }, {
+    "tid": "0",
+    "cnname": "订阅",
+    "pid": "0",
+    "childs": []
+  }],
+  "msg": "ok",
+  "code": "200"
+}

@@ -136,7 +136,6 @@ body {
   position: absolute;
   bottom: 24px;
   left: 16px;
-  z-index: 999;
 }
 
 .tt-trbs span {

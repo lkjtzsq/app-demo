@@ -32,19 +32,21 @@
 
             },
             success: function(data) {
+              var data=data.data;
               var str = '';
               var wapStr='';
               var wapList='';
               for (var i = 0; i < data.length; i++) {
                 var item = data[i];
-                var list = data[i].list;
-                str += '<li><a href=' + item.href + ' target="_blank">' + item.name + '</a>';
+                console.log(item)
+                var list = data[i].childs;
+                str += '<li><a href=' + item.href + ' target="_blank">' + item.cnname + '</a>';
                 wapStr+='<li>'+item.name+'<em class="tabline-lf"></em></li>'
-                if (list) {
+                if (list.length) {
                   str += '<ul class="child-lists">';
                   wapList+='<ul class="sections-list" style="display:none;">';
                   for (var j = 0; j < list.length; j++) {
-                    str += '<li><a href=' + list[j].href + ' target="_blank">' + list[j].title + '</a></li>';
+                    str += '<li><a href=' + list[j].href + ' target="_blank">' + list[j].cnname + '</a></li>';
                     wapList+='<li><a href='+list[j].href+' target="_blank">'+list[j].title+'</a></li>'
                   }
                   str = str + '</ul>'
