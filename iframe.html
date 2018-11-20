@@ -16,25 +16,35 @@
 <script>
   window.onload = function() {
     //获取地址参数
-    function UrlSearch() {
-      var name, value;
-      var str = location.href; //取得整个地址栏
-      var num = str.indexOf("?")
-      str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
-
-      var arr = str.split("&"); //各个参数放到数组里
-      for (var i = 0; i < arr.length; i++) {
-        num = arr[i].indexOf("=");
-        if (num > 0) {
-          name = arr[i].substring(0, num);
-          value = arr[i].substr(num + 1);
-          this[name] = value;
+    function getUrlParams() {
+      var initUrl = "http://shareapp.cyol.com/cmsfile"
+      var search = window.location.search;
+      // 写入数据字典
+      var tmparray = search.substr(1, search.length).split("&");
+      var paramsArray = new Array;
+      if (tmparray != null) {
+        for (var i = 0; i < tmparray.length; i++) {
+          var reg = /[=|^==]/; // 用=进行拆分，但不包括==
+          var set1 = tmparray[i].replace(reg, '&');
+          var tmpStr2 = set1.split('&');
+          var array = new Array;
+          array[tmpStr2[0]] = tmpStr2[1];
+          paramsArray.push(array);
         }
       }
+      // 将参数数组进行返回
+      paramsArray.forEach(function(item, index) {
+        for (key in item) {
+          console.log(item[key])
+          initUrl +=('/'+item[key]);
+        }
+      });
+      initUrl+='.html';
+      return initUrl;
     }
-    var Request = new UrlSearch(); //实例化
-    var iframeSrc=Request.href;
-    document.getElementById('frame').src=iframeSrc;
+    var linkUrl=getUrlParams();
+    var frame = document.getElementById('frame');
+    frame.src=linkUrl;
     function setIframeHeight(iframe) {
       if (iframe) {
         var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
@@ -49,4 +59,5 @@
     test.style.background = "#f1f1f1";
   }
 </script>
+
 </html>
