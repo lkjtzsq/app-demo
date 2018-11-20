@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>app-demo</title>
+  <title id="bigTitle">&nbsp;</title>
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/style.css">
   <script src="./js/jquery-1.7.2.min.js"></script>
@@ -91,7 +91,7 @@
     <!-- logo -->
     <div class="header-container">
       <div class="logo">
-        <a href="//m.thepaper.cn/" class="login" title="pengpai"></a>
+        <a href="index.html" class="login"></a>
       </div>
     </div>
 
@@ -153,10 +153,13 @@
       return null;
     }
     var tid = GetQueryString("tid");
+    var title = GetQueryString("title");
     if (!tid) {
       tid = -1;
+      $('#bigTitle').html("中国青年报App");
+    }else{
+      $('#bigTitle').html(title);
     }
-    console.log(tid);
     $.ajax({
       url: "./json/nav.json",
       type: "GET",
@@ -176,15 +179,15 @@
           if (item.tid == -1) {
             str += '<li><a href="index.html">' + item.cnname + '</a>';
           } else {
-            str += '<li><a href=channel.html?tid=' + item.tid + '>' + item.cnname + '</a>';
+            str += '<li><a href=channel.html?tid=' + item.tid +'&title='+escape(item.cnname)+ '>' + item.cnname + '</a>';
           }
           wapStr += '<li>' + item.cnname + '<em class="tabline-lf"></em></li>'
           if (list.length) {
             str += '<ul class="child-lists">';
             wapList += '<ul class="sections-list" style="display:none;">';
             for (var j = 0; j < list.length; j++) {
-              str += '<li><a href=list.html?tid=' + list[j].tid + '>' + list[j].cnname + '</a></li>';
-              wapList += '<li><a href=list.html?tid=' + list[j].tid + '>' + list[j].cnname + '</a></li>'
+              str += '<li><a href=list.html?tid=' + list[j].tid + '&title='+escape(list[j].cnname)+'>' + list[j].cnname + '</a></li>';
+              wapList += '<li><a href=list.html?tid=' + list[j].tid + '&title='+escape(list[j].cnname)+'>' + list[j].cnname + '</a></li>'
             }
             str = str + '</ul>'
             wapList = wapList + '</ul>';
@@ -207,4 +210,5 @@
   });
 </script>
 <script src="./js/header.js"></script>
+
 </html>

@@ -5,9 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>app-demo</title>
+  <title id="bigTitle">&nbsp;</title>
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/style.css">
+  <style>
+  .list-panel{
+    margin-top: 0;
+  }
+  </style>
   <script src="./js/jquery-1.7.2.min.js"></script>
   <!--[if lte IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script>
@@ -26,48 +31,6 @@
   <!-- 主体start -->
   <div class="main">
     <div class="main-left">
-      <!-- 头条(共用)start -->
-      <div class="tt">
-        <div class="tt-pic">
-          <a href="#" target="_blank" class="tt_href"><img src="" alt="" /></a>
-        </div>
-        <div class="tt-txt">
-          <h1 class="tt-title"><a href="#" class="tt_href" target="
-            "></a></h1>
-          <div class="tt-desc"></div>
-          <p class="tt-trbs">
-            <span class="trb-name"><a href="#" target="_blank"></a></span>
-            <span class="trb-time"></span>
-            <span class="trb-count"></span>
-          </p>
-          <p class="tt-logo">头条</p>
-        </div>
-        <div class="clear"></div>
-        <script>
-          // 头条ajax请求
-          $().ready(function() {
-            $.ajax({
-              url: "./json/toutiao.json",
-              type: "GET",
-              data: {
-
-              },
-              dataType: "json",
-              success: function(data) {
-                var tt = data[0]
-                $('.tt-pic img').attr("src", tt.imgUrl);
-                $('.tt_href').attr("href", tt.href);
-                $('.tt-title a').html(tt.title);
-                $(".tt-desc").html(tt.desc);
-                $(".trb-name").html(tt.source);
-                $(".trb-time").html(tt.time);
-                $(".trb-count").html(tt.look);
-              }
-            });
-          });
-        </script>
-      </div>
-      <!-- 头条(共用)end -->
       <!-- 新闻列表区域(共用)start -->
       <div class="list-panel" id="list-panel">
         <div class="loading"><img src="./img/loading.gif" /></div>
@@ -91,7 +54,7 @@
     <!-- logo -->
     <div class="header-container">
       <div class="logo">
-        <a href="//m.thepaper.cn/" class="login" title="pengpai"></a>
+        <a href="index.html" class="login"></a>
       </div>
     </div>
 
@@ -153,10 +116,13 @@
       return null;
     }
     var tid = GetQueryString("tid");
+    var title = GetQueryString("title");
     if (!tid) {
       tid = -1;
+      $('#bigTitle').html("中国青年报App");
+    }else{
+      $('#bigTitle').html(title);
     }
-    console.log(tid);
     $.ajax({
       url: "./json/nav.json",
       type: "GET",
@@ -176,15 +142,15 @@
           if (item.tid == -1) {
             str += '<li><a href="index.html">' + item.cnname + '</a>';
           } else {
-            str += '<li><a href=channel.html?tid=' + item.tid + '>' + item.cnname + '</a>';
+            str += '<li><a href=channel.html?tid=' + item.tid +'&title='+escape(item.cnname)+ '>' + item.cnname + '</a>';
           }
           wapStr += '<li>' + item.cnname + '<em class="tabline-lf"></em></li>'
           if (list.length) {
             str += '<ul class="child-lists">';
             wapList += '<ul class="sections-list" style="display:none;">';
             for (var j = 0; j < list.length; j++) {
-              str += '<li><a href=list.html?tid=' + list[j].tid + '>' + list[j].cnname + '</a></li>';
-              wapList += '<li><a href=list.html?tid=' + list[j].tid + '>' + list[j].cnname + '</a></li>'
+              str += '<li><a href=list.html?tid=' + list[j].tid + '&title='+escape(list[j].cnname)+'>' + list[j].cnname + '</a></li>';
+              wapList += '<li><a href=list.html?tid=' + list[j].tid + '&title='+escape(list[j].cnname)+'>' + list[j].cnname + '</a></li>'
             }
             str = str + '</ul>'
             wapList = wapList + '</ul>';
@@ -207,4 +173,5 @@
   });
 </script>
 <script src="./js/header.js"></script>
+
 </html>
