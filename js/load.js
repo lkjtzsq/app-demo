@@ -75,12 +75,23 @@ function loadTj(){
           var id = item.id;
           // var url = 'iframe.html'+'?href='+item.newsurl;
           var url=item.newsurl;
+          var paras='';
+          var newUrl=url.split('cmsfile')[1].split('/');
+          for(var k=1;k<newUrl.length-1;k++){
+            var para='para'+k;
+            paras+=('&'+para+'='+newUrl[k]);
+          }
+          var urlId=newUrl[newUrl.length-1].split('.html')[0];
+          paras+=('&urlId='+urlId);
+          paras=paras.slice(1,paras.length-1);
+          paras='iframe.html?'+paras;
+          console.log(paras);
           var desc=item.outline;
           var viewcount=item.viewcount;
           var update_time=item.update_time;
           var copyfrom=item.copyfrom;
 
-          str += '<div class="news-li"><div class="news-pic"><a href=' + url + ' target="_blank"><img src=' + imgUrl + '></a></div><div class="h2p"><h2><a href=' + url + ' target="_blank">'+title+'</a></h2><p>' + desc + '</p></div><div class="pdtt_trbs">' + copyfrom + '<span>' + update_time + '</span><div class="trbstxt">推荐</div></div></div>';
+          str += '<div class="news-li"><div class="news-pic"><a href=' + paras + ' target="_blank"><img src=' + imgUrl + '></a></div><div class="h2p"><h2><a href=' + paras + ' target="_blank">'+title+'</a></h2><p>' + desc + '</p></div><div class="pdtt_trbs">' + copyfrom + '<span>' + update_time + '</span><div class="trbstxt">推荐</div></div></div>';
         }
 
       }
