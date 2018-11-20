@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>app-demo</title>
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/jquery-1.7.2.min.js"></script>
+  <!--[if lte IE 9]>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+  <!------------------------------ PC代码开始 ------------------------------->
+  <!-- 头部start -->
+  <div class="phead">
+    <div class="pnav">
+      <ul class="pnav-list"></ul>
+      <script>
+        // pc导航请求ajax
+        $().ready(function() {
+          $.ajax({
+            url: "./json/nav.json",
+            type: "GET",
+            async:false,
+            dataType: 'json',
+            data: {
+
+            },
+            success: function(data) {
+              var str = '';
+              var wapStr='';
+              var wapList='';
+              for (var i = 0; i < data.length; i++) {
+                var item = data[i];
+                var list = data[i].list;
+                str += '<li><a href=' + item.href + ' target="_blank">' + item.name + '</a>';
+                wapStr+='<li>'+item.name+'<em class="tabline-lf"></em></li>'
+                if (list) {
+                  str += '<ul class="child-lists">';
+                  wapList+='<ul class="sections-list" style="display:none;">';
+                  for (var j = 0; j < list.length; j++) {
+                    str += '<li><a href=' + list[j].href + ' target="_blank">' + list[j].title + '</a></li>';
+                    wapList+='<li><a href='+list[j].href+' target="_blank">'+list[j].title+'</a></li>'
+                  }
+                  str = str + '</ul>'
+                  wapList=wapList+'</ul>';
+                }
+                str = str + '</li>'
+              }
+              $(str).appendTo($('.pnav-list'));
+              $(wapStr).appendTo($('.sections-nav'));
+              $(wapList).appendTo($('.scrolly'));
+              $('.sections-list').eq(0).show()
+              $('.sections-nav li').eq(0).addClass('cur-state');
+              $('.pnav-list>li').hover(function(){
+                $(this).find('.child-lists').stop().show('fast');
+                $(this).siblings('li').find('.child-lists').slideUp();
+              },function(){
+                $(this).find('.child-lists').hide();
+              });
+            }
+          });
+        });
+      </script>
+    </div>
+  </div>
+  <!-- 头部end -->
+  <!-- 主体start -->
+  <div class="main">
+    <div class="main-left">
+      <!-- 新闻列表区域(共用)start -->
+      <style>
+        .list-panel{
+          margin-top:0;
+        }
+      </style>
+      <div class="list-panel" id="list-panel">
+        <div class="loading"><img src="./img/loading.gif" /></div>
+      </div>
+      <!-- 新闻列表区域(共用)end -->
+    </div>
+    <div class="main-right">
+      <h1 style="width:30px;margin: 0 auto;padding: 200px 0;word-wrap: break-word;text-align: center;">
+        右侧内容待开发...
+      </h1>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <!-- 主体end -->
+
+  <!------------------------------ PC代码结束 ------------------------------->
+
+  <!------------------------------ wap代码开始 ------------------------------->
+  <!-- 头部 -->
+  <div class="header-v4">
+    <!-- logo -->
+    <div class="header-container">
+      <div class="logo">
+        <a href="//m.thepaper.cn/" class="login" title="pengpai"></a>
+      </div>
+    </div>
+
+    <!-- hanbao 默认状态-->
+    <div class="burger-abox" style="display: block;">
+      <a class="burger-a" id="moblink_top_detail_xiazai" href="http://app.cyol.com">下载APP</a>
+    </div>
+    <div class="burger-p" id="burger" style="display: block;">
+      <div class="burger opaque">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="sy-downward">
+    <div class="upv30-icon" style=""></div>
+    <div class="sy-downward-cont">
+      <div class="user-view-info" style="display:none;">
+        <div id="_no_login">
+          <ul class="sections-list-big">
+            <li><a href="javascript:void(0)" class=""><i></i><span>登录</span></a></li>
+            <li><a href="http://sou.cyol.com/indexMobile.jsp" class="serch"><i></i><span>搜索</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="cont-list">
+        <div class="scrolly">
+          <div class="sections-panel ">
+            <ul class="sections-nav ">
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------------------------------ wap代码结束 ------------------------------->
+  <!-- 回到顶部start -->
+  <div class="back-to" id="toolBackTop">
+    <a title="返回顶部" class="back-top" id="backtotop">
+      <!--返回顶部-->
+    </a>
+  </div>
+  <!-- 回到顶部end -->
+</body>
+<script src="./js/index.js"></script>
+<script src="./js/load.js"></script>
+<script src="./js/header.js"></script>
+
+</html>

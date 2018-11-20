@@ -60,6 +60,7 @@ function loadTj(){
   $.ajax({
     type: "GET",
     url: "json/index.json",
+    // async:true,
     data: {
 
     },
@@ -67,15 +68,19 @@ function loadTj(){
     success: function(data) {
       var str = '';
       for (var i = tjNum; i < tjNum+tjCount; i++) {
-        var item = data[i];
+        var item = data.data[i];
         if(item){
-          var imgUrl = item.url;
+          var imgUrl = item.imgs[0];
           var title = item.title;
           var id = item.id;
-          var url = item.thumbnailUrl;
+          // var url = 'iframe.html'+'?href='+item.newsurl;
+          var url=item.newsurl;
+          var desc=item.outline;
+          var viewcount=item.viewcount;
+          var update_time=item.update_time;
+          var copyfrom=item.copyfrom;
 
-          str += '<div class="news-li"><div class="news-pic"><a href=' + url + ' target="_blank"><img src=' + imgUrl + '/></a></div><div class="h2p"><h2><a href=' + url + ' target="_blank">'+title+'</a></h2><p>' + id + '</p></div><div class="pdtt_trbs">  <a href=' +
-            url + ' target="_blank">' + id + '</a><span>' + id + '</span><div class="trbstxt">推荐</div></div></div>';
+          str += '<div class="news-li"><div class="news-pic"><a href=' + url + ' target="_blank"><img src=' + imgUrl + '></a></div><div class="h2p"><h2><a href=' + url + ' target="_blank">'+title+'</a></h2><p>' + desc + '</p></div><div class="pdtt_trbs">' + copyfrom + '<span>' + update_time + '</span><div class="trbstxt">推荐</div></div></div>';
         }
 
       }
@@ -100,15 +105,19 @@ function loadPt(){
       console.log(333)
       var str = '';
       for (var i = ptNum; i < ptNum+ptCount; i++) {
-        var item = data[i];
+        var item = data.data[i];
         if(item){
-          var imgUrl = item.url;
+          var imgUrl = item.imgs[0];
           var title = item.title;
           var id = item.id;
-          var url = item.thumbnailUrl;
+          var url = 'iframe.html'+'?href='+item.newsurl;
+          var url=item.newsurl;
+          var desc=item.outline;
+          var viewcount=item.viewcount;
+          var update_time=item.update_time;
+          var copyfrom=item.copyfrom;
 
-          str += '<div class="news-li"><div class="news-pic"><a href=' + url + ' target="_blank"><img src=' + imgUrl + '/></a></div><div class="h2p"><h2><a href=' + url + ' target="_blank">'+title+'</a></h2><p>' + id + '</p></div><div class="pdtt_trbs">  <a href=' +
-            url + ' target="_blank">' + id + '</a><span>' + id + '</span></div></div>';
+          str += '<div class="news-li"><div class="news-pic"><a href=' + url + ' target="_blank"><img src=' + imgUrl + '></a></div><div class="h2p"><h2><a href=' + url + ' target="_blank">'+title+'</a></h2><p>' + desc + '</p></div><div class="pdtt_trbs">' + copyfrom + '<span>' + update_time + '</span></div></div>';
         }
 
       }

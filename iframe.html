@@ -7,26 +7,46 @@
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" />
-  <script>
-    window.onload = function() {
-      function setIframeHeight(iframe) {
-        if (iframe) {
-          var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
-          if (iframeWin.document.body) {
-            iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
-          }
-        }
-      };
-      setIframeHeight(document.getElementById('frame'));
-      var test =
-        document.getElementById('frame').contentWindow.document.getElementById('js-title');
-      test.style.background = "#f1f1f1";
-    }
-  </script>
+
 </head>
 
 <body>
-  <iframe src="TEST.html" frameborder="0" id="frame" width="100%" height="100%"></iframe>
+  <iframe src="" frameborder="0" id="frame" width="100%" height="100%"></iframe>
 </body>
+<script>
+  window.onload = function() {
+    //获取地址参数
+    function UrlSearch() {
+      var name, value;
+      var str = location.href; //取得整个地址栏
+      var num = str.indexOf("?")
+      str = str.substr(num + 1); //取得所有参数   stringvar.substr(start [, length ]
 
+      var arr = str.split("&"); //各个参数放到数组里
+      for (var i = 0; i < arr.length; i++) {
+        num = arr[i].indexOf("=");
+        if (num > 0) {
+          name = arr[i].substring(0, num);
+          value = arr[i].substr(num + 1);
+          this[name] = value;
+        }
+      }
+    }
+    var Request = new UrlSearch(); //实例化
+    var iframeSrc=Request.href;
+    document.getElementById('frame').src=iframeSrc;
+    function setIframeHeight(iframe) {
+      if (iframe) {
+        var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+        if (iframeWin.document.body) {
+          iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+        }
+      }
+    };
+    setIframeHeight(document.getElementById('frame'));
+    var test =
+      document.getElementById('frame').contentWindow.document.getElementById('js-title');
+    test.style.background = "#f1f1f1";
+  }
+</script>
 </html>
