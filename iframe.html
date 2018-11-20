@@ -6,12 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./js/jquery-1.7.2.min.js"></script>
   <link rel="stylesheet" type="text/css" media="screen" />
 
 </head>
 
 <body>
-  <iframe src="" frameborder="0" id="frame" width="100%" height="100%"></iframe>
+  <iframe src="" frameborder="0" id="frame" width="100%" height="100%" name="frame"></iframe>
 </body>
 <script>
   window.onload = function() {
@@ -36,10 +37,10 @@
       paramsArray.forEach(function(item, index) {
         for (key in item) {
           console.log(item[key])
-          initUrl +=('/'+item[key]);
+          initUrl += ('/' + item[key]);
         }
       });
-      initUrl+='.html';
+      initUrl += '.html';
       return initUrl;
     }
     var linkUrl=getUrlParams();
@@ -54,10 +55,14 @@
       }
     };
     setIframeHeight(document.getElementById('frame'));
-    var test =
-      document.getElementById('frame').contentWindow.document.getElementById('js-title');
-    test.style.background = "#f1f1f1";
+    // var test =window.frames["frame"].document.getElementById("js-title");
+    // test.style.background = 'red';
+
   }
+  $("#frame").load(function() {
+    console.log(1)
+    $(this).contents().find("#js-title").css('display', 'none');
+  });
 </script>
 
 </html>
