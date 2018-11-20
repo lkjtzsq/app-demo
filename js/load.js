@@ -84,7 +84,7 @@ function loadPt() {
           paras += ('&urlId=' + urlId);
           paras = paras.slice(1, paras.length);
           paras = 'iframe.html?' + paras;
-          paras = item.newsurl + paras; //跳转到正确地址为了测试访问
+          paras = item.newsurl; //跳转到正确地址为了测试访问
           var desc = item.outline;
           var viewcount = item.viewcount;
           var update_time = item.update_time;
