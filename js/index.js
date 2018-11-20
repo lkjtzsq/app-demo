@@ -1,4 +1,3 @@
-// 导航请求ajax
 $().ready(function() {
   // 头条ajax请求
   $.ajax({
@@ -34,6 +33,7 @@ $().ready(function() {
   } else {
     $('#bigTitle').html(title);
   }
+  // 导航请求ajax
   $.ajax({
     url: "./json/nav.json",
     type: "GET",

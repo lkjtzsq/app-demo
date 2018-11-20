@@ -84,12 +84,13 @@ function loadPt() {
           paras += ('&urlId=' + urlId);
           paras = paras.slice(1, paras.length);
           paras = 'iframe.html?' + paras;
+          paras = item.newsurl + paras; //跳转到正确地址为了测试访问
           var desc = item.outline;
           var viewcount = item.viewcount;
           var update_time = item.update_time;
           var copyfrom = item.copyfrom;
 
-          str += '<div class="news-li"><div class="news-pic"><a href=' + paras + ' target="_blank"><img src=' + imgUrl + '></a></div><div class="h2p"><h2><a href=' + paras + ' target="_blank">' + title + '</a></h2><p>' + desc + '</p></div><div class="pdtt_trbs">' + '<a href="" target="_blank">'+ copyfrom + '</a><span>' + update_time + '</span></div></div>';
+          str += '<div class="news-li"><div class="news-pic"><a href=' + paras + ' target="_blank"><img src=' + imgUrl + '></a></div><div class="h2p"><h2><a href=' + paras + ' target="_blank">' + title + '</a></h2><p>' + desc + '</p></div><div class="pdtt_trbs">' + '<a href="" target="_blank">' + copyfrom + '</a><span>' + update_time + '</span></div></div>';
         }
 
       }
