@@ -9,7 +9,8 @@ var tid = GetQueryString("tid");
 var title = GetQueryString("title");
 var type = GetQueryString("type");
 var searchUrl = '';
-console.log(tid)
+console.log(tid);
+var isList=false;
 if (!tid) {
   tid = -1;
   $('#bigTitle').html("中国青年报App");
@@ -19,7 +20,8 @@ if (!tid) {
   if (type) {
     searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/News/getNewsListCache/version/3.0.8/tid/' + tid;
   } else {
-    searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/Type/typeHomePage';
+    searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/Type/typeHomePage/siteid/1/device/user/tid/'+tid;
+    isList=true;
   }
 }
 //获取滚动条当前的位置
@@ -70,8 +72,11 @@ $('#backtotop').click(function() {
 var showLoading = function() {
   setTimeout(function() {
     console.log('下拉刷新了')
-    loadPt();
-    console.log(111)
+    if(isList){
+      loadList()
+    }else{
+      loadPt();
+    }
     $('.loading').hide();
   }, 500)
 }
@@ -83,9 +88,9 @@ var ptCount = 10; //滚动加载条数
 var reg = /\.htm$/; //匹配中青在线网址
 function loadPt() {
   $.ajax({
-    type: "POST",
+    type: "GET",
     url: searchUrl,
-    data: "siteid=1&device=user&tid=" + tid,
+    // data: "siteid=1&device=user&tid=" + tid,
     // data: {
     //   siteid:1,
     //   device:'user',
@@ -134,5 +139,64 @@ function loadPt() {
     }
   });
 }
+// 加载二级列表
+function loadList() {
+  $.ajax({
+    type: "GET",
+    url: searchUrl,
+    // data: "siteid=1&device=user&tid=" + tid,
+    // data: {
+    //   siteid:1,
+    //   device:'user',
+    //   tid:tid
+    // },
+    contentType: "text/plain",
+    dataType: "json",
+    success: function(data) {
+      console.log(data);
+      var str = '';
+      for (var i = ptNum; i < ptNum + ptCount; i++) {
+        var item = data.data.typenews[i];
+        if (item) {
+          var imgUrl = item.imgs[0];
+          var title = item.title;
+          var id = item.id;
+          var url = item.newsurl;
+          console.log(url)
+          var paras = '';
+          if (url.indexOf('shareapp.cyol.com')==-1) {
+            paras=item.newsurl;
+          } else {
+            var newUrl = url.split('cmsfile')[1].split('/');
+            for (var k = 1; k < newUrl.length - 1; k++) {
+              var para = 'para' + k;
+              paras += ('&' + para + '=' + newUrl[k]);
+            }
+            var urlId = newUrl[newUrl.length - 1].split('.html')[0];
+            paras += ('&urlId=' + urlId);
+            paras = paras.slice(1, paras.length);
+            paras = 'iframe.html?' + paras;
+          }
+
+          //  paras = item.newsurl; //跳转到正确地址为了测试访问
+          var desc = item.outline;
+          var viewcount = item.viewcount;
+          var update_time = item.update_time;
+          var copyfrom = item.copyfrom;
+
+          str += '<div class="news-li"><div class="news-pic"><a href=' + paras + ' target="_blank"><img src=' + imgUrl + '></a></div><div class="h2p"><h2><a href=' + paras + ' target="_blank">' + title + '</a></h2><p>' + desc + '</p></div><div class="pdtt_trbs">' + '<a href="" target="_blank">' + copyfrom + '</a><span>' + update_time + '</span></div></div>';
+        }
+
+      }
+      ptNum += ptCount;
+      $(str).appendTo($('#list-panel'));
+    }
+  });
+}
+
 //无限加载普通新闻
-loadPt();
+if(isList){
+  loadList()
+}else{
+  loadPt();
+}
