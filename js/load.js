@@ -1,3 +1,27 @@
+//获取地址栏参数
+function GetQueryString(name) {
+  var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+  var r = window.location.search.substr(1).match(reg);
+  if (r != null) return unescape(r[2]);
+  return null;
+}
+var tid = GetQueryString("tid");
+var title = GetQueryString("title");
+var type = GetQueryString("type");
+var searchUrl = '';
+console.log(tid)
+if (!tid) {
+  tid = -1;
+  $('#bigTitle').html("中国青年报App");
+  searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/News/getNewsListCache/version/3.0.8/tid/-1';
+} else {
+  $('#bigTitle').html(title);
+  if (type) {
+    searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/News/getNewsListCache/version/3.0.8/tid/' + tid;
+  } else {
+    searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/Type/typeHomePage';
+  }
+}
 //获取滚动条当前的位置
 function getScrollTop() {
   var scrollTop = 0;
@@ -56,16 +80,21 @@ jQuery.support.cors = true;
 // 无限加载普通内容
 var ptNum = 0; //初始读取下标
 var ptCount = 10; //滚动加载条数
+var reg = /\.htm$/; //匹配中青在线网址
 function loadPt() {
   $.ajax({
-    type: "GET",
-    url: "json/index.json",
-    data: {
-
-    },
+    type: "POST",
+    url: searchUrl,
+    data: "siteid=1&device=user&tid=" + tid,
+    // data: {
+    //   siteid:1,
+    //   device:'user',
+    //   tid:tid
+    // },
     contentType: "text/plain",
     dataType: "json",
     success: function(data) {
+      console.log(data);
       var str = '';
       for (var i = ptNum; i < ptNum + ptCount; i++) {
         var item = data.data[i];
@@ -74,17 +103,23 @@ function loadPt() {
           var title = item.title;
           var id = item.id;
           var url = item.newsurl;
+          console.log(url)
           var paras = '';
-          var newUrl = url.split('cmsfile')[1].split('/');
-          for (var k = 1; k < newUrl.length - 1; k++) {
-            var para = 'para' + k;
-            paras += ('&' + para + '=' + newUrl[k]);
+          if (url.indexOf('shareapp.cyol.com')==-1) {
+            paras=item.newsurl;
+          } else {
+            var newUrl = url.split('cmsfile')[1].split('/');
+            for (var k = 1; k < newUrl.length - 1; k++) {
+              var para = 'para' + k;
+              paras += ('&' + para + '=' + newUrl[k]);
+            }
+            var urlId = newUrl[newUrl.length - 1].split('.html')[0];
+            paras += ('&urlId=' + urlId);
+            paras = paras.slice(1, paras.length);
+            paras = 'iframe.html?' + paras;
           }
-          var urlId = newUrl[newUrl.length - 1].split('.html')[0];
-          paras += ('&urlId=' + urlId);
-          paras = paras.slice(1, paras.length);
-          paras = 'iframe.html?' + paras;
-        //  paras = item.newsurl; //跳转到正确地址为了测试访问
+
+          //  paras = item.newsurl; //跳转到正确地址为了测试访问
           var desc = item.outline;
           var viewcount = item.viewcount;
           var update_time = item.update_time;

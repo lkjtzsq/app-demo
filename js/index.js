@@ -18,24 +18,10 @@ $().ready(function() {
       $(".trb-count").html(tt.look);
     }
   });
-  //获取地址栏参数
-  function GetQueryString(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-    var r = window.location.search.substr(1).match(reg);
-    if (r != null) return unescape(r[2]);
-    return null;
-  }
-  var tid = GetQueryString("tid");
-  var title = GetQueryString("title");
-  if (!tid) {
-    tid = -1;
-    $('#bigTitle').html("中国青年报App");
-  } else {
-    $('#bigTitle').html(title);
-  }
+
   // 导航请求ajax
   $.ajax({
-    url: "./json/nav.json",
+    url: "https://zqbapp.cyol.com/zqzxapi/api.php?s=/Type/getTypeListCache/siteid/1",
     type: "GET",
     async: false,
     dataType: 'json',
@@ -47,25 +33,23 @@ $().ready(function() {
       var str = '';
       var wapStr = '';
       var wapList = '';
-      for (var i = 0; i < data.length; i++) {
+      for (var i = 0; i < 9; i++) { //设置9条 否则溢出
         var item = data[i];
         var list = data[i].childs;
         if (item.tid == -1) {
           str += '<li><a href="index.html">' + item.cnname + '</a>';
         } else {
-          str += '<li><a href=channel.html?tid=' + item.tid + '&title=' + escape(item.cnname) + '>' + item.cnname + '</a>';
+          str += '<li><a href=channel.html?tid=' + item.tid + '&title=' + escape(item.cnname) + '&type=channel >' + item.cnname + '</a>';
         }
         wapStr += '<li>' + item.cnname + '<em class="tabline-lf"></em></li>'
-        if (list.length) {
-          str += '<ul class="child-lists">';
-          wapList += '<ul class="sections-list" style="display:none;">';
-          for (var j = 0; j < list.length; j++) {
-            str += '<li><a href=list.html?tid=' + list[j].tid + '&title=' + escape(list[j].cnname) + '>' + list[j].cnname + '</a></li>';
-            wapList += '<li><a href=list.html?tid=' + list[j].tid + '&title=' + escape(list[j].cnname) + '>' + list[j].cnname + '</a></li>'
-          }
-          str = str + '</ul>'
-          wapList = wapList + '</ul>';
+        str += '<ul class="child-lists">';
+        wapList += '<ul class="sections-list" style="display:none;">';
+        for (var j = 0; j < list.length; j++) {
+          str += '<li><a href=list.html?tid=' + list[j].tid + '&title=' + escape(list[j].cnname) + '>' + list[j].cnname + '</a></li>';
+          wapList += '<li><a href=list.html?tid=' + list[j].tid + '&title=' + escape(list[j].cnname) + '>' + list[j].cnname + '</a></li>'
         }
+        str = str + '</ul>'
+        wapList = wapList + '</ul>';
         str = str + '</li>'
       }
       $(str).appendTo($('.pnav-list'));
