@@ -1,24 +1,4 @@
 $().ready(function() {
-  // 头条ajax请求
-  $.ajax({
-    url: "./json/toutiao.json",
-    type: "GET",
-    data: {
-
-    },
-    dataType: "json",
-    success: function(data) {
-      var tt = data[0]
-      $('.tt-pic img').attr("src", tt.imgUrl);
-      $('.tt_href').attr("href", tt.href);
-      $('.tt-title a').html(tt.title);
-      $(".tt-desc").html(tt.desc);
-      $(".trb-name").html(tt.source);
-      $(".trb-time").html(tt.time);
-      $(".trb-count").html(tt.look);
-    }
-  });
-
   // 导航请求ajax
   $.ajax({
     url: "https://zqbapp.cyol.com/zqzxapi/api.php?s=/Type/getTypeListCache/siteid/1",
@@ -38,8 +18,10 @@ $().ready(function() {
         var list = data[i].childs;
         if (item.tid == -1) {
           str += '<li><a href="index.html">' + item.cnname + '</a>';
+          var moreLi = '<li><a href="index.html">更多</a></li>';
         } else {
           str += '<li><a href=channel.html?tid=' + item.tid + '&title=' + escape(item.cnname) + '&type=channel >' + item.cnname + '</a>';
+          var moreLi = '<li><a href=channel.html?tid=' + item.tid + '&title=' + escape(item.cnname) + '&type=channel >更多</a></li>';
         }
         wapStr += '<li>' + item.cnname + '<em class="tabline-lf"></em></li>'
         str += '<ul class="child-lists">';
@@ -49,7 +31,7 @@ $().ready(function() {
           wapList += '<li><a href=list.html?tid=' + list[j].tid + '&title=' + escape(list[j].cnname) + '>' + list[j].cnname + '</a></li>'
         }
         str = str + '</ul>'
-        wapList = wapList + '</ul>';
+        wapList = wapList + moreLi + '</ul>';
         str = str + '</li>'
       }
       $(str).appendTo($('.pnav-list'));

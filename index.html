@@ -7,8 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title id="bigTitle">&nbsp;</title>
   <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/swiper.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <script src="./js/jquery-1.7.2.min.js"></script>
+  <script src="./js/swiper.min.js"></script>
   <!--[if lte IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js"></script>
 <![endif]-->
@@ -26,25 +28,49 @@
   <!-- 主体start -->
   <div class="main">
     <div class="main-left">
-      <!-- 头条(共用)start -->
-      <div class="tt">
-        <div class="tt-pic">
-          <a href="#" target="_blank" class="tt_href"><img src="" alt="" /></a>
+      <!-- 焦点图(共用)start -->
+      <!-- Swiper -->
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+
         </div>
-        <div class="tt-txt">
-          <h1 class="tt-title"><a href="#" class="tt_href" target="
-            "></a></h1>
-          <div class="tt-desc"></div>
-          <p class="tt-trbs">
-            <span class="trb-name"><a href="#" target="_blank"></a></span>
-            <span class="trb-time"></span>
-            <span class="trb-count"></span>
-          </p>
-          <p class="tt-logo">头条</p>
-        </div>
-        <div class="clear"></div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
       </div>
-      <!-- 头条(共用)end -->
+      <script>
+        // 轮播图ajax请求
+        $.ajax({
+          url: "https://zqbapp.cyol.com/zqzxapi/api.php?s=/Flash/getFlashCache",
+          type: "POST",
+          data: {
+            tid: -1
+          },
+          dataType: "json",
+          success: function(data) {
+            var str = '';
+            console.log(data.data.flash);
+            var attr = data.data.flash;
+            for (var i = 0; i < attr.length; i++) {
+              var title = attr[i].title;
+              var imgUrl = attr[i].imgurl;
+              var newsUrl = attr[i].newsurl;
+              str += ('<div class="swiper-slide"><a href=' + newsUrl + ' target="_blank"><img src=' + imgUrl + '><div class="bg"></div><h1>' + title + '</h1></a></div>');
+            }
+            $(str).appendTo($('.swiper-wrapper'));
+            var swiper = new Swiper('.swiper-container', {
+              loop: true,
+              autoplay: {
+                delay: 5000
+              },
+              pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+              }
+            });
+          }
+        });
+      </script>
+      <!-- 焦点图(共用)end -->
       <!-- 新闻列表区域(共用)start -->
       <div class="list-panel" id="list-panel">
         <div class="loading"><img src="./img/loading.gif" /></div>
@@ -120,4 +146,5 @@
 <script src="./js/load.js"></script>
 <script src="./js/index.js"></script>
 <script src="./js/header.js"></script>
+
 </html>

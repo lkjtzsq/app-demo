@@ -10,7 +10,7 @@ var title = GetQueryString("title");
 var type = GetQueryString("type");
 var searchUrl = '';
 console.log(tid);
-var isList=false;
+var isList = false;
 if (!tid) {
   tid = -1;
   $('#bigTitle').html("中国青年报App");
@@ -20,8 +20,8 @@ if (!tid) {
   if (type) {
     searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/News/getNewsListCache/version/3.0.8/tid/' + tid;
   } else {
-    searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/Type/typeHomePage/siteid/1/device/user/tid/'+tid;
-    isList=true;
+    searchUrl = 'https://zqbapp.cyol.com/zqzxapi/api.php?s=/Type/typeHomePage/siteid/1/device/user/tid/' + tid;
+    isList = true;
   }
 }
 //获取滚动条当前的位置
@@ -72,9 +72,9 @@ $('#backtotop').click(function() {
 var showLoading = function() {
   setTimeout(function() {
     console.log('下拉刷新了')
-    if(isList){
+    if (isList) {
       loadList()
-    }else{
+    } else {
       loadPt();
     }
     $('.loading').hide();
@@ -110,8 +110,8 @@ function loadPt() {
           var url = item.newsurl;
           console.log(url)
           var paras = '';
-          if (url.indexOf('shareapp.cyol.com')==-1) {
-            paras=item.newsurl;
+          if (url.indexOf('shareapp.cyol.com') == -1) {
+            paras = item.newsurl;
           } else {
             var newUrl = url.split('cmsfile')[1].split('/');
             for (var k = 1; k < newUrl.length - 1; k++) {
@@ -124,7 +124,7 @@ function loadPt() {
             paras = 'iframe.html?' + paras;
           }
 
-          //  paras = item.newsurl; //跳转到正确地址为了测试访问
+          paras = item.newsurl; //跳转到正确地址为了测试访问
           var desc = item.outline;
           var viewcount = item.viewcount;
           var update_time = item.update_time;
@@ -164,8 +164,8 @@ function loadList() {
           var url = item.newsurl;
           console.log(url)
           var paras = '';
-          if (url.indexOf('shareapp.cyol.com')==-1) {
-            paras=item.newsurl;
+          if (url.indexOf('shareapp.cyol.com') == -1) {
+            paras = item.newsurl;
           } else {
             var newUrl = url.split('cmsfile')[1].split('/');
             for (var k = 1; k < newUrl.length - 1; k++) {
@@ -195,8 +195,8 @@ function loadList() {
 }
 
 //无限加载普通新闻
-if(isList){
+if (isList) {
   loadList()
-}else{
+} else {
   loadPt();
 }

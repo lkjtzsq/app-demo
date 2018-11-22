@@ -73,6 +73,51 @@ body {
   float: left;
 }
 
+/* 轮播图 */
+
+.swiper-container {
+  height: 480px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 480px;
+}
+
+.swiper-slide .bg {
+  height: 55px;
+  margin-top: -55px;
+  background: #000;
+  opacity: 0.5;
+}
+
+.swiper-slide h1 {
+  height: 55px;
+  line-height: 52px;
+  margin-top: -55px;
+  position: relative;
+  color: #fff;
+  margin-left: 30px;
+  font-weight: normal;
+  /* font-family: Microsoft YaHei; */
+}
+
+.swiper-pagination-bullet {
+  opacity: 1;
+  background: #fff;
+}
+
+.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #00a7f5;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: 16px;
+  left: inherit;
+  right: 25px;
+  width: 80px;
+}
+
 /* 右侧 */
 
 .main-right {
@@ -154,8 +199,6 @@ body {
   color: #a0a0a0;
   background: url(../img/lmbg10.png) no-repeat right center;
 }
-
-.trb-time {}
 
 .trb-count {
   padding-left: 16px;
@@ -417,6 +460,39 @@ body {
   /* 隐藏pc元素 */
   .phead {
     display: none;
+  }
+  /* 轮播图 */
+  .swiper-container {
+    height: 188px;
+  }
+  .swiper-slide img {
+    height: 188px;
+  }
+  .swiper-slide .bg {
+    height: 35px;
+    margin-top: -39px;
+  }
+  .swiper-slide h1 {
+    height: 35px;
+    /* text-align: center; */
+    line-height: 35px;
+    margin-top: -35px;
+    margin-left: 10px;
+    font-size: 13px;
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 9px;
+    right: 0px;
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+    margin: 0 3px;
+  }
+  .swiper-pagination-bullet {
+    opacity: 1;
+    width: 5px;
+    background: #fff;
+    height: 5px;
+    margin-left: 4px;
   }
   .header-v4 {
     height: 55px;
@@ -787,9 +863,9 @@ body {
     white-space: nowrap;
     font-size: 15px;
   }
-  .back-to{
-    right:20px !important;
-    margin-right:inherit !important;
+  .back-to {
+    right: 20px !important;
+    margin-right: inherit !important;
   }
 }
 
