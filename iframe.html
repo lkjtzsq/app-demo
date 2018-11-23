@@ -10,11 +10,21 @@
 </head>
 
 <body>
-  <iframe src="" frameborder="0" id="frame" width="100%" height="100%" name="frame"></iframe>
+  <div class="panel">
+    <h1 class="title"></h1>
+    <div class="time"></div>
+    <div class="source">
+
+    </div>
+    <div class="content">
+
+    </div>
+  </div>
+  <iframe src="TEST.html" frameborder="0" id="frame" width="100%" height="0" name="frame"></iframe>
 
 </body>
 <script>
-  document.domain = "cyol.com";
+  // document.domain = "cyol.com";
   window.onload = function() {
     //获取地址参数
     function getUrlParams() {
@@ -43,9 +53,9 @@
       initUrl += '.html';
       return initUrl;
     }
-    var linkUrl=getUrlParams();
+    // var linkUrl=getUrlParams();
     var frame = document.getElementById('frame');
-    frame.src=linkUrl;
+    // frame.src=linkUrl;
     //自适应iframe高度
     function setIframeHeight(iframe) {
       if (iframe) {
@@ -58,11 +68,17 @@
     // var test =window.frames["frame"].document.querySelectorAll("h1")[0];
     // test.style.background = 'red';
 
-    setIframeHeight(document.getElementById('frame'));
+    // setIframeHeight(document.getElementById('frame'));
   }
   $("#frame").load(function() {
-    $(this).contents().find("body").css('overflow', 'hidden');
-    $(this).contents().find("#js-title").css('background', '#c0c0c0');
+    var title=$(this).contents().find('#js-title').html();
+    var time=$(this).contents().find('#updatetimes').html();
+    var source=$(this).contents().find('#js-source span:last').html();
+    var content=$(this).contents().find('.section-main').html();
+    $('.title').html(title);
+    $('.time').html(time);
+    $('.source').html(source);
+    $('.content').html(content);
   });
 </script>
 

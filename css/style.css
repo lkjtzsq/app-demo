@@ -810,14 +810,14 @@ body {
     margin-bottom: 15px;
   }
   .sections-nav {
-    margin: 0 4% 0 6%;
+    margin: 0 5% 0 5%;
   }
   .sections-nav li.cur-state {
     background-color: #4a4a53;
     color: #00a5eb;
   }
   .sections-nav li {
-    width: 16%;
+    width: 17%;
     height: 50px;
     line-height: 50px;
     color: #b4b4b4;
@@ -835,7 +835,7 @@ body {
     display: block;
     width: 1px;
     height: 16px;
-    background-color: #4a4a53;
+    /* background-color: #4a4a53; */
     position: absolute;
     top: 12px;
     left: 0;
@@ -849,8 +849,13 @@ body {
   .sections-list li {
     width: 30%;
     height: 30px;
+    overflow: hidden;
     float: left;
+    box-sizing: border-box;
+    padding: 0 8px;
     line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     border: 1px solid #535363;
     text-align: center;
     display: inline-block;
